@@ -23,22 +23,27 @@
 <body>
 
 <?php
+
+    mb_internal_encoding("UTF-8");
+
     $ksp = $_POST['ksp'] ?? '';
     $random = rand(1, 3);
-    $korisnikPotez = '';
+    $korisnikPotez = 0;
     $potezKompjutera = '';
 
-    switch (strtolower($ksp)) {
-        case "kamen":
+
+    switch ($ksp) {
+        case "Kamen":
             $korisnikPotez = 1;
             break;
-        case "škare":
+        case "Škare":
             $korisnikPotez = 2;
             break;
-        case "papir":
+        case "Papir":
             $korisnikPotez = 3;
             break;
     }
+
 
     echo '<h2>Kamen, Škare, Papir</h2>
     <form method="post">
@@ -50,6 +55,7 @@
 
     if ($korisnikPotez) {
         echo '<div class="result">';
+
 
         if ($korisnikPotez == $random) {
             echo 'Rezultat: Neriješeno! Oba ste odabrali isto.';
